@@ -72,10 +72,14 @@
             var output = dataItems(items);
             document.getElementById("dataProduct").innerHTML = output;
 
+           
+
             var input, filter, listBarang, itemName
             input = document.getElementById("keyword")
             filter = input.value.toString()
             listBarang = document.getElementById("listBarang")
+
+            alert(input.toString)
 
             hasil = [];
             for(var i = 0; i < items.length; i++){
@@ -88,21 +92,13 @@
                 }
             }
 
-            if(filter.toString() != '') {
+            if(filter.toString()) {
                 document.getElementById("dataProduct").innerHTML = '';
                 var output1 = dataItems(hasil);
-                document.getElementById("dataProduct").outerHTML = output1;
-            } else {
-                var output = dataItems(items);
-                getTags()
-                document.getElementById("dataProduct").innerHTML = output
+                document.getElementById("dataProduct").innerHTML = output1;
             }
-
-
-            
     
         })
-
 
     </script>
 </body>
