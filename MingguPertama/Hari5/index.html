@@ -61,7 +61,28 @@
 
         document.getElementById("dataProduct").innerHTML = output;
 
-        
+        var form = document.getElementById('formItem');
+
+        form.addEventListener("submit", function(e){
+            e.preventDefault()
+            
+            var listBarang, itemName
+            
+            var data = document.getElementById('keyword').value.toLowerCase();
+
+            listBarang = document.getElementById('listBarang');
+
+            console.log(listBarang)
+            
+            for(var i = 0; i < listBarang.length; i++){
+                itemName = listBarang[i],getElementById('itemName')[0];
+                if(itemName.innerHTML.toUpperCase().indexOf(filter) > -1){
+                    listBarang[i].style.display = "block";
+                }else{
+                    listBarang[i].style.display = "none";
+                }
+            }
+        })
 
     </script>
 </body>
