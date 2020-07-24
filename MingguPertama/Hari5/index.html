@@ -61,28 +61,21 @@
 
         document.getElementById("dataProduct").innerHTML = output;
 
-        var form = document.getElementById('formItem');
+        function cari(){
+            var input, filter, listBarang, itemName
+            input = document.getElementById("keyword")
+            filter = input.nodeValue.toUpperCase()
+            listBarang = document.getElementById("listBarang")
 
-        form.addEventListener("submit", function(e){
-            e.preventDefault()
-            
-            var listBarang, itemName
-            
-            var data = document.getElementById('keyword').value.toLowerCase();
-
-            listBarang = document.getElementById('listBarang');
-
-            console.log(listBarang)
-            
             for(var i = 0; i < listBarang.length; i++){
-                itemName = listBarang[i],getElementById('itemName')[0];
+                itemName = listBarang[i].getElementById("itemName")[0];
                 if(itemName.innerHTML.toUpperCase().indexOf(filter) > -1){
-                    listBarang[i].style.display = "block";
+                    listBarang[i].style.display = "block"; 
                 }else{
                     listBarang[i].style.display = "none";
                 }
             }
-        })
+        }
 
     </script>
 </body>
