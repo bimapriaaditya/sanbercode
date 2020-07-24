@@ -57,25 +57,52 @@
             return data;
         }
 
+        function getTags() {
+            return `<div class="row" id="dataProduct"></div>`;
+        }
+
         var output = dataItems(items);
 
         document.getElementById("dataProduct").innerHTML = output;
 
-        function cari(){
+        var form = document.getElementById("formItem");
+
+        form.addEventListener("submit", function(e) {
+
+            var output = dataItems(items);
+            document.getElementById("dataProduct").innerHTML = output;
+
             var input, filter, listBarang, itemName
             input = document.getElementById("keyword")
-            filter = input.nodeValue.toUpperCase()
+            filter = input.value.toString()
             listBarang = document.getElementById("listBarang")
 
-            for(var i = 0; i < listBarang.length; i++){
-                itemName = listBarang[i].getElementById("itemName")[0];
-                if(itemName.innerHTML.toUpperCase().indexOf(filter) > -1){
-                    listBarang[i].style.display = "block"; 
-                }else{
-                    listBarang[i].style.display = "none";
+            hasil = [];
+            for(var i = 0; i < items.length; i++){
+                nama = items[i][1];
+                console.log(nama)
+
+                if(nama.toUpperCase() == filter.toUpperCase()) {
+                    hasil = [items[i]];
+                   
                 }
             }
-        }
+
+            if(filter.toString() != '') {
+                document.getElementById("dataProduct").innerHTML = '';
+                var output1 = dataItems(hasil);
+                document.getElementById("dataProduct").outerHTML = output1;
+            } else {
+                var output = dataItems(items);
+                getTags()
+                document.getElementById("dataProduct").innerHTML = output
+            }
+
+
+            
+    
+        })
+
 
     </script>
 </body>
